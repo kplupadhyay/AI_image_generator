@@ -15,14 +15,20 @@ export default function CreatePost() {
   const [generatingImg , setGeneratingImg] = useState(false);
   const [loading , setLoading] = useState(false)
 
+
+  const generateImg=()=>{
+
+  }
+
   const handleSubmit = ()=>{
 
   }
   const handleChange=(e)=>{
-
+    SetForm( {...form , [e.target.name]:[e.target.value]})
   }
   const handleSurpriseMe=()=>{
-
+    const randomPrompt = getRandomPrompt(form.prompt)
+    SetForm({...form , prompt:randomPrompt})
   }
   return (
     <section className='max-w-7xl mx-auto'>
@@ -68,6 +74,24 @@ export default function CreatePost() {
 
           )}
         </div>
+        </div>
+        <div className='mt-5 flex gap-5'>
+          <button
+          type='button'
+          onClick={generateImg}
+          className='text-white bg-green-700 font-medium rounded-md text-sm 
+        '
+          >
+            {generatingImg ? 'Generating..' : 'Generate'}
+          </button>
+
+        </div>
+        <div className='mt-10'>
+          <p className='mt-2 text-[#666e75] text-[14px]'>if you created the image you can share in the community</p>
+          <button type="submit"
+          className='mt-3 text-white bg-[#6469ff] font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center'
+          
+          >Share with the community</button>
         </div>
       </form>
     </section>
